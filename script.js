@@ -9,7 +9,7 @@ function getComputerChoice() {
         case 2:
             return 'paper'
         case 3:
-            return 'scissors'        
+            return 'scissors'
     }
 }
 
@@ -48,24 +48,26 @@ function playRound(playerSelection, computerSelection) {
     return null
 }
 
-function playGame(playerSelection) {
-    let wins = 0
-    let loses = 0
-    for (let i = 0; i < 5; i++){
-        var round = playRound(playerSelection, getComputerChoice())
-        if (round == 'win') wins++
-        if (round == 'lose') loses++
-        console.log(round)
-
+function playGame() {
+    let wins = 0;
+    let loses = 0;
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = prompt('Round ' + (i + 1) + ': Rock, Paper, or Scissors?', 'rock');
+        const computerSelection = getComputerChoice();
+        var round = playRound(playerSelection, computerSelection);
+        if (round === 'win') wins++;
+        if (round === 'lose') loses++;
+        console.log(round);
     }
 
-    if (wins > loses) return console.log('You Win!')
-    if (loses > wins) return console.log('You Lose!')
-    return console.log('Draw!')
+    if (wins > loses) console.log('You Win!');
+    else if (loses > wins) console.log('You Lose!');
+    else console.log('Draw!');
 }
 
-const playerSelection = prompt('Rock, Paper or Scissors?', 'rock');
-const computerSelection = getComputerChoice();
+//const playerSelection = prompt('Rock, Paper or Scissors?', 'rock');
+//const computerSelection = getComputerChoice();
 //console.log(computerSelection)
 //console.log(playRound(playerSelection, computerSelection));
-playGame(playerSelection)
+
+playGame();
